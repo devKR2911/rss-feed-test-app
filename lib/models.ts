@@ -1,6 +1,6 @@
-import mongoose, {model, models} from "mongoose";
+import mongoose, { model, models } from 'mongoose';
 
-mongoose.connect("mongodb://root:password@localhost:27017", {
+mongoose.connect('mongodb://root:password@localhost:27017', {
   dbName: 'rss',
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -12,7 +12,7 @@ mongoose.connect("mongodb://root:password@localhost:27017", {
 const RssSettingsSchema = new mongoose.Schema({
   feedUrl: {
     type: String,
-    required: true
+    required: true,
   }, headerFontSize: {
     type: String,
   }, contentFontSize: {
@@ -29,10 +29,10 @@ const RssSettingsSchema = new mongoose.Schema({
     type: Number,
   },
 
-},{toJSON: {getters: true}})
+}, { toJSON: { getters: true } });
 
 const RssSettings = mongoose.models.RssSettings || model('RssSettings', RssSettingsSchema);
 
 export {
-  RssSettings
-}
+  RssSettings,
+};

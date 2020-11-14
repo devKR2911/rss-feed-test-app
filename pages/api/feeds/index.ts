@@ -1,15 +1,13 @@
-
-import {RssSettings} from "../../../lib/models";
+import { RssSettings } from '../../../lib/models';
 
 export default async function (req, res) {
-
   switch (req.method) {
     // Create new feed settings
     case 'POST':
-        await RssSettings.create(req.body)
+      await RssSettings.create(req.body);
       res.json({
-        message: 'Settings saved successfully'
-      })
+        message: 'Settings saved successfully',
+      });
       break;
     // Get all feed settings
     case 'GET':
