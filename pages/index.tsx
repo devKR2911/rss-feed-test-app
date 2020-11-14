@@ -108,12 +108,16 @@ export default function Home() {
               <Col md={12}>
                 <Form.Group>
                   <Form.Label>Rss Feed URL</Form.Label>
-                  <Form.Control size="sm" type="url" placeholder="Feed URL"
-                                value={selectedSettings.feedUrl || ''}
-                                onInput={e => setSelectedSettings({
-                                  ...selectedSettings,
-                                  feedUrl: e.target.value
-                                })}
+                  <Form.Control
+                    required
+                    size="sm"
+                    type="url"
+                    placeholder="Feed URL"
+                    value={selectedSettings.feedUrl || ''}
+                    onInput={e => setSelectedSettings({
+                      ...selectedSettings,
+                      feedUrl: e.target.value
+                    })}
                   />
 
                   <Form.Control.Feedback type="invalid">
