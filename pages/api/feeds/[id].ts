@@ -6,8 +6,9 @@ export default async function (req, res) {
   switch (req.method) {
     // Update feed settings
     case 'PUT':
+      const { __v,_id,...rest} = req.body;
       await RssSettings.updateOne({_id: req?.query?.id}, {
-        $set: req.body
+        $set: rest
       })
       res.json({
         message: 'Settings updated successfully'
@@ -34,8 +35,7 @@ export default async function (req, res) {
       }
 
       const parser = new RssParser();
-      // todo: replace hardcoded value
-      const feed = await parser.parseURL('https://www.reddit.com/.rss');
+      const feed = await parser.parseURL(settings?.feedUrl);
 
       res.json({settings, feed});
       break;

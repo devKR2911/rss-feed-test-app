@@ -13,9 +13,11 @@ const RssSettingsSchema = new mongoose.Schema({
   feedUrl: {
     type: String,
     required: true
-  }, fontSize: {
+  }, headerFontSize: {
     type: String,
-  }, headColor: {
+  }, contentFontSize: {
+    type: String,
+  }, headerColor: {
     type: String,
   }, contentColor: {
     type: String,

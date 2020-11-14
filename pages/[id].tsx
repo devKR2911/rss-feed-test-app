@@ -25,10 +25,24 @@ export default function Feed() {
         <h3 className="text-capitalize mt-3 mb-3 text-center">{data.title}</h3>
 
         {data.items?.length ? data.items.map((item, i) => (
-            <Card className="mt-2" key={i}>
-              <Card.Header>{item.title}</Card.Header>
-              <Card.Body>
-<div  dangerouslySetInnerHTML={{__html:item.content}}></div>
+            <Card className="mt-2 mx-auto" key={i}
+                  style={{
+                    width: settings.width ? settings.width + 'px' : 'auto',
+                    height: settings.height ? settings.height + 'px' : 'auto',
+                    overflow: 'auto'
+                  }}>
+              <Card.Header>
+                <span style={{
+                  fontSize: settings.headerFontSize || '18px',
+                  color: settings.headerColor || '#000',
+                }}>{item.title}</span>
+              </Card.Header>
+              <Card.Body style={{
+                fontSize: settings.contentFontSize || '12px',
+                color: settings.contentColor || '#000',
+                backgroundColor: settings.backgroundColor || '#fff',
+              }}>
+                <div dangerouslySetInnerHTML={{__html: item.content}}></div>
               </Card.Body>
             </Card>
           )
