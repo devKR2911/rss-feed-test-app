@@ -1,21 +1,28 @@
-import Head from 'next/head'
-import {getSortedPostsData} from '../lib/posts'
 import {Button, Card, Form, Modal} from "react-bootstrap";
 import RssFeeds from "../components/rssfeeds";
 import {useEffect, useState} from "react";
+import {RssSettings} from "../lib/models";
 
-export default function Home() {
-  const [settings, changeSettings]: [any, any] = useState({});
+export default function Home({
+                               feedSettings
+                             }) {
+  const [settings, changeSettings]: [any, any] = useState(feedSettings);
   const [showSettingModal, setShowSettingModal]: [any, any] = useState(false);
-  useEffect(() => {
-    fetch('/api/v1/feedSettings').then(res => {
-      res.json().then(settings => {
-        changeSettings(settings)
-      }).catch(() => {
-      })
 
+  const saveSettings = () => {
+    fetch('/api/v1/feedSettings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(settings)
     })
+  }
+
+  useEffect(()=>{
+    console.log('test effect')
   })
+
 
 
   return (
@@ -29,7 +36,7 @@ export default function Home() {
       <RssFeeds/>
 
 
-      <Modal show={showSettingModal}>
+      <Modal show={showSettingModal} onHide={() => setShowSettingModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Feed Settings</Modal.Title>
         </Modal.Header>
@@ -108,7 +115,9 @@ export default function Home() {
           <Button variant="secondary" size="sm"
                   onClick={() => setShowSettingModal(false)}
           >Close</Button>
-          <Button variant="primary" size="sm">Save changes</Button>
+          <Button variant="primary" size="sm"
+                  onClick={saveSettings}
+          >Save changes</Button>
         </Modal.Footer>
       </Modal>
 
@@ -117,18 +126,13 @@ export default function Home() {
   )
 }
 
-
-// export async function getStaticProps() {
-//   // Call an external API endpoint to get posts.
-//   // You can use any data fetching library
-//   const res = await fetch('/api/v1/feedSettings')
-//   const feedSettings = await res.json()
-//
-//   // By returning { props: posts }, the Blog component
-//   // will receive `posts` as a prop at build time
-//   return {
-//     props: {
-//       feedSettings,
-//     },
-//   }
-// }
+export async function getStaticProps() {
+  // todo: update url based on NODE_ENV
+  const feedSettings = (await RssSettings.findOne());
+  return {
+    props: {
+      // todo: optimize
+      feedSettings:  JSON.parse(JSON.stringify(feedSettings))
+    }
+  }
+}

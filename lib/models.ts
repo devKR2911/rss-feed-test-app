@@ -7,32 +7,29 @@ mongoose.connect("mongodb://root:password@localhost:27017", {
   useFindAndModify: false,
 });
 
-
+// todo: add model
 // Schema
 const RssSettingsSchema = new mongoose.Schema({
-  fontSize: {
+  feedUrl: {
     type: String,
     required: true
+  }, fontSize: {
+    type: String,
   }, headColor: {
     type: String,
-    required: true
   }, contentColor: {
     type: String,
-    required: true
   }, backgroundColor: {
     type: String,
-    required: true
   }, width: {
     type: Number,
-    required: true
   }, height: {
     type: Number,
-    required: true
   },
 
-})
+},{toJSON: {getters: true}})
 
-const  RssSettings = mongoose.models.RssSettings ||  model('RssSettings', RssSettingsSchema);
+const RssSettings = mongoose.models.RssSettings || model('RssSettings', RssSettingsSchema);
 
 export {
   RssSettings

@@ -12,6 +12,9 @@ export default async function (req, res) {
       } else {
         await RssSettings.create(req.body)
       }
+      res.json({
+        message: 'Settings saved successfully'
+      })
       break;
     case 'GET':
       res.json(await RssSettings.findOne())
