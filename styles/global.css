@@ -25,3 +25,9 @@ img {
   max-width: 100%;
   display: block;
 }
+
+.icn-btn {
+  cursor: pointer;
+  display: inline-block;
+  font-size:.8rem;
+}
