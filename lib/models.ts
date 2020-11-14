@@ -1,4 +1,4 @@
-import mongoose, { model, models } from 'mongoose';
+import mongoose, { model } from 'mongoose';
 
 mongoose.connect('mongodb://root:password@localhost:27017', {
   dbName: 'rss',
