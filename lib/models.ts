@@ -1,6 +1,6 @@
 import mongoose, { model } from 'mongoose';
 
-mongoose.connect('mongodb://root:password@localhost:27017', {
+mongoose.connect(process.env.MONGO_URL, {
   dbName: 'rss',
   useNewUrlParser: true,
   useUnifiedTopology: true,
