@@ -1,3 +1,4 @@
+import './FeedsList.module.css';
 import { Alert, ListGroup } from 'react-bootstrap';
 
 export default function FeedList({ feeds, onEdit, onDelete, onView }) {
@@ -7,7 +8,7 @@ export default function FeedList({ feeds, onEdit, onDelete, onView }) {
         <div className="container ">
           <ListGroup>
             {feeds.map((feed) => (
-              <ListGroup.Item className="d-flex  align-items-center">
+              <ListGroup.Item className="d-flex  align-items-center list-item">
                 <span>{feed.feedUrl}</span>
                 <span className="flex-grow-1"></span>
                 <span className=" ml-4 mr-2 flex-shrink-1" title="Edit settings of feed" onClick={() => onEdit(feed)}>

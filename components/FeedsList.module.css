@@ -1,0 +1,10 @@
+.list-item{
+    max-width: 100%;
+    position: relative;
+}
+
+.list-item > span:first-child{
+    flex-shrink: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
