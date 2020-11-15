@@ -7,7 +7,7 @@
     "build:server": "tsc --project tsconfig.server.json",
     "build:next": "next build",
     "build": "npm run build:next && npm run build:server",
-    "start": "NODE_ENV=production node dist/index.js",
+    "start": "cross-env NODE_ENV=production node dist/index.js",
     "tslint": "tslint -p . -c tslint.json"
   },
   "dependencies": {
@@ -36,6 +36,7 @@
     "@types/mongoose": "^5.10.0",
     "@types/node": "^14.14.7",
     "@types/react": "^16.9.56",
+    "cross-env": "^7.0.2",
     "prettier": "^2.1.2",
     "ts-node": "^9.0.0",
     "tslint": "^6.1.3",
