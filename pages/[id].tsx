@@ -40,6 +40,7 @@ export default function Feed() {
     const { feed, settings } = (await data.json())?.data?.FeedDataRead;
     setSettings(settings);
     setData(feed);
+    setLoading(false);
   };
 
   useEffect(() => {
