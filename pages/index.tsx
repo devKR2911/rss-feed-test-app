@@ -1,9 +1,9 @@
-import { Button } from 'react-bootstrap';
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import {Button} from 'react-bootstrap';
+import {useEffect, useState} from 'react';
+import {useRouter} from 'next/router';
 import SettingsModal from '../components/settingsModal';
 import FeedList from '../components/feedsList';
-import { toast } from 'react-nextjs-toast';
+import {toast} from 'react-nextjs-toast';
 
 export default function Home() {
   const router = useRouter();
@@ -19,7 +19,7 @@ export default function Home() {
 
       await fetch('/graphql', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
           query: `mutation{
            FeedDelete(id : ${JSON.stringify(id)})
@@ -38,7 +38,7 @@ export default function Home() {
     // const data = await fetch('/api/feeds');
     const data = await fetch('/graphql', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         query: `{
            FeedList{
@@ -81,7 +81,13 @@ export default function Home() {
           variant="default"
           size="sm"
           onClick={() => {
-            setSelectedSettings({});
+            setSelectedSettings({
+              headerFontSize: 18,
+              contentFontSize: 12,
+              headerColor: '#000000',
+              contentColor: '#000000',
+              backgroundColor: '#ffffff'
+            });
             setShowSettingModal(true);
           }}
         >

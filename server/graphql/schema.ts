@@ -2,8 +2,8 @@ export default `
 input FeedInput{
   _id:String
   feedUrl: String!
-  headerFontSize: String
-  contentFontSize: String
+  headerFontSize: Int
+  contentFontSize: Int
   headerColor: String
   contentColor: String
   backgroundColor: String
@@ -28,8 +28,8 @@ type Query{
 type Feed{
   _id:String
   feedUrl: String!
-  headerFontSize: String
-  contentFontSize: String
+  headerFontSize: Int
+  contentFontSize: Int
   headerColor: String
   contentColor: String
   backgroundColor: String

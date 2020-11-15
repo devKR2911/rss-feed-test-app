@@ -90,7 +90,7 @@ export default function SettingsModal({ selectedSettings, onSave, show, onHide, 
                     <Form.Label>Header Font Size</Form.Label>
                     <Form.Control
                       size="sm"
-                      type="text"
+                      type="number"
                       placeholder="Header Font size"
                       value={selectedSettings.headerFontSize || ''}
                       onInput={(e) =>
@@ -107,7 +107,7 @@ export default function SettingsModal({ selectedSettings, onSave, show, onHide, 
                     <Form.Label>Content Font Size</Form.Label>
                     <Form.Control
                       size="sm"
-                      type="text"
+                      type="number"
                       placeholder="Content Font size"
                       value={selectedSettings.contentFontSize || ''}
                       onInput={(e) =>

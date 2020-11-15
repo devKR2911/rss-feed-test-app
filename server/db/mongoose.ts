@@ -12,9 +12,9 @@ const RssSettingsSchema = new mongoose.Schema({
     type: String,
     required: true,
   }, headerFontSize: {
-    type: String,
+    type: Number,
   }, contentFontSize: {
-    type: String,
+    type: Number,
   }, headerColor: {
     type: String,
   }, contentColor: {
