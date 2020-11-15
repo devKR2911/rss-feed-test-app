@@ -8,6 +8,7 @@ export default function Feed() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Load rss feed data
   const loadItemsAndSettings = async () => {
     // const data = await fetch(`/api/feeds/${router.query.id}`);
     const data = await fetch('/graphql', {
@@ -36,7 +37,6 @@ export default function Feed() {
         }`,
       }),
     });
-    setLoading(false);
     const { feed, settings } = (await data.json())?.data?.FeedDataRead;
     setSettings(settings);
     setData(feed);

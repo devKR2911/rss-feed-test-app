@@ -16,7 +16,7 @@ import { ToastContainer } from 'react-nextjs-toast';
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <ToastContainer />
+      <ToastContainer  align={'right'} position={'top'}/>
       <Header />
       <Component {...pageProps} />
     </>
