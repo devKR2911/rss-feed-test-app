@@ -1,6 +1,7 @@
 import { RssSettings } from '../db/mongoose';
 import RssParser from 'rss-parser';
 
+/* Resolvers for feed */
 const FeedList = async () => {
   console.log('within handler');
   const feeds = await RssSettings.find();
@@ -10,6 +11,7 @@ const FeedList = async () => {
 const FeedInsert = async (args) => {
   return RssSettings.create(args.feed);
 };
+
 const FeedDataRead = async (args) => {
   const settings = await RssSettings.findOne({
     _id: args.id,

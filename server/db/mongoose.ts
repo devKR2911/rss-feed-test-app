@@ -7,6 +7,7 @@ mongoose.connect(process.env.MONGO_URL, {
   useFindAndModify: false,
 });
 
+// RssSettings schema
 const RssSettingsSchema = new mongoose.Schema({
   feedUrl: {
     type: String,
