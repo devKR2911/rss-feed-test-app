@@ -11,7 +11,7 @@ export default function FeedList({ feeds, onEdit, onDelete, onView }) {
       {feeds?.length ? (
         <Row className=" mt-2 pt-2 d-flex align-items-stretch">
           {feeds.map((feed, i) => (
-            <Col md={6} lg={4} xl={3} key={i} className="pb-4" style={{ position: 'relative' }}>
+            <Col md={6} lg={4} xl={4} key={i} className="pb-4" style={{ position: 'relative' }}>
               <Card className="feed-card">
                 <Card.Body>
                   <Card.Body className="d-flex align-items-center" style={{ height: '250px' }}>
@@ -29,6 +29,7 @@ export default function FeedList({ feeds, onEdit, onDelete, onView }) {
                     <span className="flex-shrink-1 view-btn" title="View RSS feed" onClick={() => onView(feed._id)}>
                       <i className="fa fa-eye  icn-btn" />
                     </span>
+                    <span className="seperator"></span>
                     <span
                       className=" flex-shrink-1 edit-btn"
                       title="Edit settings of feed"
@@ -36,6 +37,7 @@ export default function FeedList({ feeds, onEdit, onDelete, onView }) {
                     >
                       <i className="fa fa-cog  icn-btn" />
                     </span>
+                    <span className="seperator"></span>
 
                     <span
                       className="flex-shrink-1 delete-btn"

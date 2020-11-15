@@ -13,11 +13,6 @@ export default function SettingsModal({selectedSettings, onSave, show, onHide, o
     e.preventDefault();
     setValidated(true);
     if (!(formRef?.current as HTMLFormElement)?.checkValidity()) return;
-    // await fetch(selectedSettings._id ? `/api/feeds/${selectedSettings._id}` : '/api/feeds', {
-    //   method: selectedSettings._id ? 'PUT' : 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(selectedSettings),
-    // });
 
     let query;
     let variables;
@@ -96,7 +91,7 @@ export default function SettingsModal({selectedSettings, onSave, show, onHide, o
                       onInput={(e) =>
                         onSettingsUpdate({
                           ...selectedSettings,
-                          headerFontSize: e.target.value,
+                          headerFontSize: +e.target.value || null,
                         })
                       }
                     />
@@ -109,11 +104,11 @@ export default function SettingsModal({selectedSettings, onSave, show, onHide, o
                       size="sm"
                       type="number"
                       placeholder="Content Font size"
-                      value={selectedSettings.contentFontSize || ''}
+                      value={selectedSettings.contentFontSize || null}
                       onInput={(e) =>
                         onSettingsUpdate({
                           ...selectedSettings,
-                          contentFontSize: e.target.value,
+                          contentFontSize: +e.target.value || 0,
                         })
                       }
                     />

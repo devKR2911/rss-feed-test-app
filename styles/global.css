@@ -47,6 +47,7 @@ img {
 }
 
 .action-icons {
+    align-items: center;
     padding: 1.25rem;
     /*max-width: 0;*/
     display: flex;
@@ -87,6 +88,7 @@ img {
     position: fixed;
     right:20px;
     bottom: 20px;
+    cursor:pointer;
 }
 
 .add-floating-btn svg {
@@ -123,4 +125,11 @@ img {
 .feed-card:hover{
     transform:scale(1.01);
     box-shadow: 0 0 6px 0px #ccc;
+}
+
+.seperator{
+    width:2px;
+    height: 40px;
+    display: inline-block;
+    background-color: #eee;
 }
