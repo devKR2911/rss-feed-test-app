@@ -1,7 +1,7 @@
-import {Alert, ListGroup} from "react-bootstrap";
+import { Alert, ListGroup } from 'react-bootstrap';
 
 export default function FeedList({
-                                   feeds, onEdit, onDelete, onView
+                                   feeds, onEdit, onDelete, onView,
                                  }) {
   return (<>
     {feeds?.length ? (
@@ -37,5 +37,5 @@ export default function FeedList({
     ) : (
       <Alert variant="info">No saved RSS feed found</Alert>
     )}
-  </>)
+  </>);
 }
