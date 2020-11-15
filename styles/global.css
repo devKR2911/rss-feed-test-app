@@ -86,9 +86,9 @@ img {
     border-radius: 50%;
     font-size: 25px;
     position: fixed;
-    right:20px;
+    right: 20px;
     bottom: 20px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .add-floating-btn svg {
@@ -107,29 +107,37 @@ img {
     font-weight: 600;
     /*font-size: 1.5em;*/
 }
-.feed-card-title{
+
+.feed-card-title {
     padding-top: 10px;
 }
+
 .feed-card-title a {
     font-weight: 400;
     /*font-size: 1.3em;*/
 }
 
-.feed-card{
-    height:100%;
-    width:100%;
+.feed-card {
+    height: 100%;
+    width: 100%;
 
     transition: .4s transform, .4s box-shadow;
 }
 
-.feed-card:hover{
-    transform:scale(1.01);
+.feed-card:hover {
+    transform: scale(1.01);
     box-shadow: 0 0 6px 0px #ccc;
 }
 
-.seperator{
-    width:2px;
+.seperator {
+    width: 2px;
     height: 40px;
     display: inline-block;
     background-color: #eee;
+}
+
+.feed-image {
+    max-height: 100%;
+    width: auto;
+    margin: 0 auto;
 }

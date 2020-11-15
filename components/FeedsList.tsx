@@ -15,7 +15,7 @@ export default function FeedList({ feeds, onEdit, onDelete, onView }) {
               <Card className="feed-card">
                 <Card.Body>
                   <Card.Body className="d-flex align-items-center" style={{ height: '200px' }}>
-                    <Card.Img src={feed.image} />
+                    <Card.Img className="feed-image" src={feed.image} />
                   </Card.Body>
                   <Card.Title className="feed-card-title">
                     <a href={feed.feedUrl} target="_blank">

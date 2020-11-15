@@ -1,9 +1,9 @@
-import {Button} from 'react-bootstrap';
-import {useEffect, useState} from 'react';
-import {useRouter} from 'next/router';
+import { Button } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import SettingsModal from '../components/SettingsModal';
 import FeedList from '../components/FeedsList';
-import {toast} from 'react-nextjs-toast';
+import { toast } from 'react-nextjs-toast';
 import ConfirmDialog from '../components/ConfirmDialog';
 
 export default function Home() {
@@ -20,7 +20,7 @@ export default function Home() {
     setConfirmFn(() => async () => {
       await fetch('/graphql', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           query: `mutation{
            FeedDelete(id : ${JSON.stringify(id)})
@@ -43,7 +43,7 @@ export default function Home() {
     // const data = await fetch('/api/feeds');
     const data = await fetch('/graphql', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         query: `{
            FeedList{
@@ -77,7 +77,7 @@ export default function Home() {
       {loading && (
         <div className="justify-content-center d-flex align-content-center mt-4">
           <span>Loading please wait &nbsp;&nbsp;&nbsp;</span>
-          <i className="fas fa-circle-notch fa-spin" style={{fontSize: '30px'}}></i>
+          <i className="fas fa-circle-notch fa-spin" style={{ fontSize: '30px' }}></i>
         </div>
       )}
 

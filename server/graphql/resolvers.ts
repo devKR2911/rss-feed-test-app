@@ -37,7 +37,7 @@ const FeedDataRead = async (args) => {
 const FeedUpdate = async (args) => {
   const { __v, _id, ...rest } = args.feed;
 
-  RssSettings.updateOne(
+  await RssSettings.updateOne(
     { _id: args?.id },
     {
       $set: rest,
