@@ -72,7 +72,6 @@ export default function Home() {
 
   return (
     <div className="container">
-
       <FeedList
         feeds={feeds}
         onEdit={(feed) => {
@@ -93,7 +92,7 @@ export default function Home() {
               contentFontSize: 12,
               headerColor: '#000000',
               contentColor: '#000000',
-              backgroundColor: '#ffffff'
+              backgroundColor: '#ffffff',
             });
             setShowSettingModal(true);
           }}

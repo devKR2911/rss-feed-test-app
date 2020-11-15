@@ -38,6 +38,7 @@ export default function Feed() {
       }),
     });
     const { feed, settings } = (await data.json())?.data?.FeedDataRead;
+    debugger
     setSettings(settings);
     setData(feed);
     setLoading(false);

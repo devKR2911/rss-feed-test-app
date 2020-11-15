@@ -35,6 +35,23 @@
   ```
 - Visit http://localhost:3000
 
+#### For production 
+
+- Install dependencies using
+  ```      
+  npm install
+  ```
+- Build app using 
+  ```      
+  npm run build
+  ```
+- Run production app using following command
+  ```      
+  npm run start
+  ```
+
+
+
 
 ### Running using docker-compose
 

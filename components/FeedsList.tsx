@@ -5,7 +5,7 @@ export default function FeedList({ feeds, onEdit, onDelete, onView }) {
   return (
     <>
       {feeds?.length ? (
-        <div className="container ">
+        <div className="container mt-2 pt-2">
           <ListGroup>
             {feeds.map((feed, i) => (
               <ListGroup.Item key={i} className="d-flex  align-items-center list-item">
@@ -25,7 +25,7 @@ export default function FeedList({ feeds, onEdit, onDelete, onView }) {
           </ListGroup>
         </div>
       ) : (
-        <Alert variant="info">No saved RSS feed found</Alert>
+        <Alert variant="info" className="mt-4">No saved RSS feed found</Alert>
       )}
     </>
   );
