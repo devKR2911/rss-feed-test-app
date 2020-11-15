@@ -138,6 +138,6 @@ img {
 
 .feed-image {
     max-height: 100%;
-    width: auto;
+    width: auto !important;
     margin: 0 auto;
 }
