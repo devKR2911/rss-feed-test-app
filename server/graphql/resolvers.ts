@@ -40,8 +40,8 @@ const FeedUpdate = async (args) => {
     try {
       const parser = new RssParser();
       const feed = await parser.parseURL(args?.feed?.feedUrl);
-      args.feed.image = feed?.image?.url;
-      args.feed.description = feed?.description;
+      rest.image = feed?.image?.url;
+      rest.description = feed?.description;
     } catch (e) {}
   }
   RssSettings.updateOne(

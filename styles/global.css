@@ -81,6 +81,9 @@ img {
     justify-content: center;
     border-radius: 50%;
     font-size: 25px;
+    position: fixed;
+    right:20px;
+    bottom: 20px;
 }
 
 .add-floating-btn svg {
