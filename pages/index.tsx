@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import SettingsModal from '../components/settingsModal';
 import FeedList from '../components/feedsList';
+import { toast } from 'react-nextjs-toast';
 
 export default function Home() {
   const router = useRouter();
-
   const [selectedSettings, setSelectedSettings]: [any, any] = useState(null);
   const [showSettingModal, setShowSettingModal]: [any, any] = useState(false);
   const [feeds, setFeeds]: [any[], any] = useState(null);
@@ -16,6 +16,11 @@ export default function Home() {
       await fetch(`/api/feeds/${id}`, {
         method: 'DELETE',
       });
+      toast.notify(
+        'Deleted successfully', {
+          duration: 3,
+          type: 'success',
+        });
       await getFeedList();
     }
   };

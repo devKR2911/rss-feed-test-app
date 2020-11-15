@@ -1,5 +1,6 @@
 import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
 import { useEffect, useRef, useState } from 'react';
+import { toast } from 'react-nextjs-toast';
 
 export default function SettingsModal({
                                         selectedSettings,
@@ -24,6 +25,11 @@ export default function SettingsModal({
       body: JSON.stringify(selectedSettings),
     });
     onHide(false);
+    toast.notify(
+      'Feeds saved successfully', {
+        duration: 3,
+        type: 'success',
+      });
     if (onSave) await onSave();
   };
 
