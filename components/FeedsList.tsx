@@ -14,7 +14,7 @@ export default function FeedList({ feeds, onEdit, onDelete, onView }) {
             <Col md={6} lg={4} xl={4} key={i} className="pb-4" style={{ position: 'relative' }}>
               <Card className="feed-card">
                 <Card.Body>
-                  <Card.Body className="d-flex align-items-center" style={{ height: '250px' }}>
+                  <Card.Body className="d-flex align-items-center" style={{ height: '200px' }}>
                     <Card.Img src={feed.image} />
                   </Card.Body>
                   <Card.Title className="feed-card-title">
