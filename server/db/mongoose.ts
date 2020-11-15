@@ -22,6 +22,10 @@ const RssSettingsSchema = new mongoose.Schema({
     type: String,
   }, backgroundColor: {
     type: String,
+  }, image: {
+    type: String,
+  }, description: {
+    type: String,
   }, width: {
     type: Number,
   }, height: {

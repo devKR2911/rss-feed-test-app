@@ -82,10 +82,9 @@ export default function Home() {
         onView={(id) => router.push(`/${id}`)}
       />
 
-      <div className="text-right mt-4">
-        <Button
-          variant="default"
-          size="sm"
+      <div className="d-flex justify-content-end mt-4">
+        <div
+          className="add-floating-btn"
           onClick={() => {
             setSelectedSettings({
               headerFontSize: 18,
@@ -96,10 +95,7 @@ export default function Home() {
             });
             setShowSettingModal(true);
           }}
-        >
-          <i className="fa fa-plus mr-1"></i>
-          Add New Feed
-        </Button>
+        ><i className="fa fa-plus"/></div>
       </div>
 
       <SettingsModal

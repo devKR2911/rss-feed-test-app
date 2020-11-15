@@ -1,4 +1,4 @@
-import { RssSettings } from '../db/mongoose';
+import {RssSettings} from '../db/mongoose';
 import RssParser from 'rss-parser';
 
 /* Resolvers for feed */
@@ -9,6 +9,17 @@ const FeedList = async () => {
 };
 
 const FeedInsert = async (args) => {
+  if (args?.feed?.feedUrl) {
+    try {
+      const parser = new RssParser();
+      const feed = await parser.parseURL(args?.feed?.feedUrl);
+      args.feed.image = feed?.image?.url;
+      args.feed.description = feed?.description;
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   return RssSettings.create(args.feed);
 };
 
@@ -23,12 +34,18 @@ const FeedDataRead = async (args) => {
   const parser = new RssParser();
   const feed = await parser.parseURL(settings?.feedUrl);
 
-  return { settings, feed };
+  return {settings, feed};
 };
 const FeedUpdate = async (args) => {
-  const { __v, _id, ...rest } = args.feed;
+  const {__v, _id, ...rest} = args.feed;
+  if (args?.feed?.feedUrl) {
+    const parser = new RssParser();
+    const feed = await parser.parseURL(args?.feed?.feedUrl);
+    args.feed.image = feed?.image?.url;
+    args.feed.description = feed?.description;
+  }
   await RssSettings.updateOne(
-    { _id: args?.id },
+    {_id: args?.id},
     {
       $set: rest,
     }
@@ -37,7 +54,7 @@ const FeedUpdate = async (args) => {
 };
 
 const FeedDelete = async (args) => {
-  await RssSettings.deleteOne({ _id: args?.id });
+  await RssSettings.deleteOne({_id: args?.id});
   return true;
 };
 

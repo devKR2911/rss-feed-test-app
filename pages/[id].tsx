@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { Alert, Card } from 'react-bootstrap';
+import { Alert, Card, Image } from 'react-bootstrap';
 
 export default function Feed() {
   const router = useRouter();
@@ -32,13 +32,16 @@ export default function Feed() {
                    title
                    content
                  }
+                 image{
+                  url
+                 }
               }
            }
         }`,
       }),
     });
-    const { feed, settings } = (await data.json())?.data?.FeedDataRead;
-    debugger
+    const { feed, settings } = (await data.json())?.data?.FeedDataRead || {};
+
     setSettings(settings);
     setData(feed);
     setLoading(false);
@@ -50,15 +53,19 @@ export default function Feed() {
 
   return (
     <div className="container mt-1 mb-1">
-      {loading ? (
+      {loading && (
         <div className="justify-content-center d-flex align-content-center mt-4">
           <span>Loading please wait &nbsp;&nbsp;&nbsp;</span>
           <i className="fas fa-circle-notch fa-spin" style={{ fontSize: '30px' }}></i>
         </div>
-      ) : data ? (
-        <>
-          <h3 className="text-capitalize mt-3 mb-3 text-center">{data.title}</h3>
+      )}
 
+      {!loading && data && (
+        <div>
+          <div className="d-flex mt-2">
+            <Image width={50} src={data?.image?.url} roundedCircle />
+            <h3 className="text-capitalize mt-3 mb-3 ml-2 text-center">{data.title}</h3>
+          </div>
           {data.items?.length ? (
             data.items.map((item, i) => (
               <Card
@@ -94,10 +101,9 @@ export default function Feed() {
           ) : (
             <Alert variant="info">No feed items found</Alert>
           )}
-        </>
-      ) : (
-        <Alert variant="info">Not found</Alert>
+        </div>
       )}
+      {!loading && !data && <Alert variant="info">Not found</Alert>}
     </div>
   );
 }

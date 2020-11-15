@@ -35,6 +35,8 @@ type Feed{
   backgroundColor: String
   width: Int
   height:Int
+  image: String
+  description: String
 }
 
 type FeedDataResponse{
@@ -46,9 +48,14 @@ type FeedDataResponse{
 type FeedData{
   title:String
   items: [FeedDataItem]
+  image: ImageType
 }
 type FeedDataItem{
   title:String
   content: String
+}
+
+type ImageType{
+  url:String
 }
 `;
