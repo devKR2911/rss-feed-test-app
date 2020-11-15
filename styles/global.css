@@ -47,12 +47,15 @@ img {
 }
 
 .action-icons {
+    padding: 1.25rem;
     /*max-width: 0;*/
     display: flex;
     overflow: hidden;
     transition: .4s max-width;
     font-size: 1.2em;
     justify-content: space-around;
+    width: 100%;
+    border-top: 1px solid #ddd;
 }
 
 /*.list-item:hover .action-icons {*/
@@ -108,4 +111,16 @@ img {
 .feed-card-title a {
     font-weight: 400;
     /*font-size: 1.3em;*/
+}
+
+.feed-card{
+    height:100%;
+    width:100%;
+
+    transition: .4s transform, .4s box-shadow;
+}
+
+.feed-card:hover{
+    transform:scale(1.01);
+    box-shadow: 0 0 6px 0px #ccc;
 }
