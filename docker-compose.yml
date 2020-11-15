@@ -12,7 +12,9 @@ services:
 #      - /usr/src/app/node_modules
 #      - /usr/src/app/.next
     env_file:
-      - .env.example
+      - .env.docker
+    links:
+      - mongo
 
   mongo:
     image: mongo

@@ -12,7 +12,7 @@ RUN npm install
 
 # Copying source files
 COPY . /usr/src/app
-COPY ./.env.example /usr/src/app/.env
+COPY ./.env.docker /usr/src/app/.env
 
 # Building app
 RUN npm run build
