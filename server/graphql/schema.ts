@@ -22,7 +22,7 @@ type Mutation{
 type Query{
   Feed(id: String!): Feed
   FeedList: [Feed]
-  FeedDataRead: [FeedDataResponse]
+  FeedDataRead(id: String): FeedDataResponse
 }
 
 type Feed{
@@ -39,7 +39,7 @@ type Feed{
 
 type FeedDataResponse{
   settings: Feed
-  feeds: FeedData
+  feed: FeedData
 }
 
 

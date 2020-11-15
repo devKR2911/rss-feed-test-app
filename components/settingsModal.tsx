@@ -13,11 +13,39 @@ export default function SettingsModal({ selectedSettings, onSave, show, onHide, 
     e.preventDefault();
     setValidated(true);
     if (!(formRef?.current as HTMLFormElement)?.checkValidity()) return;
-    await fetch(selectedSettings._id ? `/api/feeds/${selectedSettings._id}` : '/api/feeds', {
-      method: selectedSettings._id ? 'PUT' : 'POST',
+    // await fetch(selectedSettings._id ? `/api/feeds/${selectedSettings._id}` : '/api/feeds', {
+    //   method: selectedSettings._id ? 'PUT' : 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(selectedSettings),
+    // });
+
+    let query;
+    let variables;
+    if (selectedSettings._id) {
+      query = `mutation($id: String!, $feed: FeedInput!) {
+           FeedUpdate(id: $id,  feed: $feed){
+               _id
+           }
+        }`;
+      variables = { id: selectedSettings._id, feed:selectedSettings };
+    } else {
+      query = `mutation ($feed: FeedInput!) {
+           FeedInsert(feed: $feed){
+               _id
+           }
+        }`;
+      variables = { feed:selectedSettings };
+    }
+
+    await fetch('/graphql', {
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(selectedSettings),
+      body: JSON.stringify({
+        query,
+        variables
+      }),
     });
+
     onHide(false);
     toast.notify('Feeds saved successfully', {
       duration: 3,

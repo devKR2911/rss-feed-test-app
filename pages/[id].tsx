@@ -8,8 +8,34 @@ export default function Feed() {
   const [data, setData] = useState(null);
 
   const loadItemsAndSettings = async () => {
-    const data = await fetch(`/api/feeds/${router.query.id}`);
-    const { feed, settings } = await data.json();
+    // const data = await fetch(`/api/feeds/${router.query.id}`);
+    const data = await fetch('/graphql', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        query: `{
+           FeedDataRead(id: ${JSON.stringify(router.query.id)}){
+              settings{
+                headerFontSize
+                contentFontSize
+                headerColor
+                contentColor
+                backgroundColor
+                width
+                height
+              }
+              feed{
+                 title
+                 items{
+                   title
+                   content
+                 }
+              }
+           }
+        }`,
+      }),
+    });
+    const { feed, settings } = (await data.json())?.data?.FeedDataRead;
     setSettings(settings);
     setData(feed);
   };

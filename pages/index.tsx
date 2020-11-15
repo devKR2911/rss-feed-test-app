@@ -13,21 +13,49 @@ export default function Home() {
 
   const deleteSettings = async (id) => {
     if (confirm('Do you really want to delete the feed?')) {
-      await fetch(`/api/feeds/${id}`, {
+      /*      await fetch(`/api/feeds/${id}`, {
         method: 'DELETE',
+      });*/
+
+      await fetch('/graphql', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          query: `mutation{
+           FeedDelete(id : ${JSON.stringify(id)})
+        }`,
+        }),
       });
-      toast.notify(
-        'Deleted successfully', {
-          duration: 3,
-          type: 'success',
-        });
+      toast.notify('Deleted successfully', {
+        duration: 3,
+        type: 'success',
+      });
       await getFeedList();
     }
   };
 
   const getFeedList = async () => {
-    const data = await fetch('/api/feeds');
-    setFeeds(await data.json());
+    // const data = await fetch('/api/feeds');
+    const data = await fetch('/graphql', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        query: `{
+           FeedList{
+               _id
+              feedUrl
+              headerFontSize
+              contentFontSize
+              headerColor
+              contentColor
+              backgroundColor
+              width
+              height
+           }
+        }`,
+      }),
+    });
+    setFeeds((await data.json())?.data.FeedList);
   };
 
   useEffect(() => {
@@ -45,7 +73,7 @@ export default function Home() {
           setShowSettingModal(true);
         }}
         onDelete={deleteSettings}
-        onView={id => router.push(`/${id}`)}
+        onView={(id) => router.push(`/${id}`)}
       />
 
       <div className="text-right mt-4">
@@ -69,7 +97,6 @@ export default function Home() {
         onHide={() => setShowSettingModal(false)}
         onSave={getFeedList}
       />
-
     </div>
   );
 }

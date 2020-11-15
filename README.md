@@ -1,20 +1,21 @@
 # RSS FEED App
 
-### Used technology stack and libraries
+### Used Technologies
 
 - Next JS
 - React
 - Bootstrap
 - Mongodb
 - Node
+- Graphql
+- ExpressJS
 
 
 ### Development environment
 
 - Set up a Mongodb database 
     - Install mongo db in local machine and create database `rss`
-    - Or create a docker container using `docker-compose.ym` file located at `./other/mongo`
-    - Or run following docker command to create the image
+      - Or run following docker command to create the docker container of mongodb
         ```
         docker run -p 27017:27017 \
             -e MONGO_INITDB_ROOT_USERNAME=root\
@@ -37,11 +38,14 @@
 
 ### Running using docker-compose
 
-- Rename `.env.example` to `.env`.
 - Execute following command
   ```
-  docker-compose up
+  docker-compose up --build
   ```
+- Visit http://localhost:3000
+
+### Graphiql UI
 
 
+ Visit http://localhost:3000/graphql
   
