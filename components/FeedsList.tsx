@@ -7,18 +7,18 @@ export default function FeedList({ feeds, onEdit, onDelete, onView }) {
       {feeds?.length ? (
         <div className="container ">
           <ListGroup>
-            {feeds.map((feed) => (
-              <ListGroup.Item className="d-flex  align-items-center list-item">
+            {feeds.map((feed, i) => (
+              <ListGroup.Item key={i} className="d-flex  align-items-center list-item">
                 <span>{feed.feedUrl}</span>
-                <span className="flex-grow-1"></span>
+                <span className="flex-grow-1"/>
                 <span className=" ml-4 mr-2 flex-shrink-1" title="Edit settings of feed" onClick={() => onEdit(feed)}>
-                  <i className="fa fa-cog  icn-btn"></i>
+                  <i className="fa fa-cog  icn-btn"/>
                 </span>
                 <span className="mr-2 flex-shrink-1" title="View RSS feed" onClick={() => onView(feed._id)}>
-                  <i className="fa fa-eye  icn-btn"></i>
+                  <i className="fa fa-eye  icn-btn"/>
                 </span>
                 <span className="flex-shrink-1" title="Delete RSS feed" onClick={() => onDelete(feed._id)}>
-                  <i className="fa fa-times  icn-btn"></i>
+                  <i className="fa fa-times  icn-btn"/>
                 </span>
               </ListGroup.Item>
             ))}
