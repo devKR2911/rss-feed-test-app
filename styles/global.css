@@ -54,6 +54,7 @@ img {
     font-size: 1.2em;
     justify-content: space-around;
 }
+
 /*.list-item:hover .action-icons {*/
 /*    max-width: 100px;*/
 /*}*/
@@ -85,19 +86,21 @@ img {
 .add-floating-btn svg {
     transition: .4s transform;
 }
+
 .add-floating-btn:hover svg {
     transform: rotate(360deg);
 }
 
-.navbar{
- background-color: #7a73ff !important;
+.navbar, nav.bg-dark {
+    background-color: #7a73ff !important;
 }
-.navbar-dark .navbar-brand{
+
+.navbar-dark .navbar-brand {
     font-weight: 600;
     font-size: 1.5em;
 }
 
-.feed-card-title a{
+.feed-card-title a {
     font-weight: 400;
     font-size: 1.3em;
 }

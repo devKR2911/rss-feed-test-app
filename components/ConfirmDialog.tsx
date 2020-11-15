@@ -2,9 +2,8 @@ import { Button, Modal } from 'react-bootstrap';
 
 export default function ConfirmDialog({ show, onHide, body, onConfirm }) {
   return (
-    <>
-      {show && (
-        <Modal.Dialog onAbort={() => onHide(true)}>
+
+        <Modal show={show} centered onHide={() => onHide(true)}>
           <Modal.Header closeButton>
             <Modal.Title>Confirm</Modal.Title>
           </Modal.Header>
@@ -21,8 +20,7 @@ export default function ConfirmDialog({ show, onHide, body, onConfirm }) {
               Confirm
             </Button>
           </Modal.Footer>
-        </Modal.Dialog>
-      )}
-    </>
+        </Modal>
+
   );
 }
