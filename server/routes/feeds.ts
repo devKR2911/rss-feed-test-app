@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { RssSettings } from '../../lib/models';
+import { RssSettings } from '../db/mongoose';
 import RssParser from 'rss-parser';
 
 const router = Router();

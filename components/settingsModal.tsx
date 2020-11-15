@@ -2,13 +2,7 @@ import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
 import { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-nextjs-toast';
 
-export default function SettingsModal({
-                                        selectedSettings,
-                                        onSave,
-                                        show,
-                                        onHide,
-                                        onSettingsUpdate,
-                                      }) {
+export default function SettingsModal({ selectedSettings, onSave, show, onHide, onSettingsUpdate }) {
   const formRef = useRef();
   const [validated, setValidated] = useState(false);
   useEffect(() => {
@@ -25,11 +19,10 @@ export default function SettingsModal({
       body: JSON.stringify(selectedSettings),
     });
     onHide(false);
-    toast.notify(
-      'Feeds saved successfully', {
-        duration: 3,
-        type: 'success',
-      });
+    toast.notify('Feeds saved successfully', {
+      duration: 3,
+      type: 'success',
+    });
     if (onSave) await onSave();
   };
 
@@ -53,7 +46,7 @@ export default function SettingsModal({
                       type="url"
                       placeholder="Feed URL"
                       value={selectedSettings.feedUrl || ''}
-                      onInput={e =>
+                      onInput={(e) =>
                         onSettingsUpdate({
                           ...selectedSettings,
                           feedUrl: e.target.value,
@@ -61,11 +54,7 @@ export default function SettingsModal({
                       }
                     />
 
-                    <Form.Control.Feedback
-                      type="invalid"
-                    >
-                      Please enter a valid url.
-                    </Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">Please enter a valid url.</Form.Control.Feedback>
                   </Form.Group>
                 </Col>
                 <Col md={6}>
@@ -76,7 +65,7 @@ export default function SettingsModal({
                       type="text"
                       placeholder="Header Font size"
                       value={selectedSettings.headerFontSize || ''}
-                      onInput={e =>
+                      onInput={(e) =>
                         onSettingsUpdate({
                           ...selectedSettings,
                           headerFontSize: e.target.value,
@@ -93,7 +82,7 @@ export default function SettingsModal({
                       type="text"
                       placeholder="Content Font size"
                       value={selectedSettings.contentFontSize || ''}
-                      onInput={e =>
+                      onInput={(e) =>
                         onSettingsUpdate({
                           ...selectedSettings,
                           contentFontSize: e.target.value,
@@ -110,7 +99,7 @@ export default function SettingsModal({
                       type="number"
                       placeholder="Block Height"
                       value={selectedSettings.height || ''}
-                      onInput={e =>
+                      onInput={(e) =>
                         onSettingsUpdate({
                           ...selectedSettings,
                           height: e.target.value,
@@ -128,7 +117,7 @@ export default function SettingsModal({
                       type="number"
                       placeholder="Block Width"
                       value={selectedSettings.width || ''}
-                      onInput={e =>
+                      onInput={(e) =>
                         onSettingsUpdate({
                           ...selectedSettings,
                           width: e.target.value,
@@ -145,7 +134,7 @@ export default function SettingsModal({
                       type="color"
                       placeholder="Select Header Color"
                       value={selectedSettings.headerColor || '#000000'}
-                      onInput={e =>
+                      onInput={(e) =>
                         onSettingsUpdate({
                           ...selectedSettings,
                           headerColor: e.target.value,
@@ -162,7 +151,7 @@ export default function SettingsModal({
                       type="color"
                       placeholder="Select Content Color"
                       value={selectedSettings.contentColor || '#000000'}
-                      onInput={e =>
+                      onInput={(e) =>
                         onSettingsUpdate({
                           ...selectedSettings,
                           contentColor: e.target.value,
@@ -179,7 +168,7 @@ export default function SettingsModal({
                       type="color"
                       placeholder="Select Background Color"
                       value={selectedSettings.backgroundColor || '#ffffff'}
-                      onInput={e =>
+                      onInput={(e) =>
                         onSettingsUpdate({
                           ...selectedSettings,
                           backgroundColor: e.target.value,

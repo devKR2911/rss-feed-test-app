@@ -7,8 +7,6 @@ mongoose.connect(process.env.MONGO_URL, {
   useFindAndModify: false,
 });
 
-// todo: add model
-// Schema
 const RssSettingsSchema = new mongoose.Schema({
   feedUrl: {
     type: String,

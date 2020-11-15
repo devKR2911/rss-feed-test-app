@@ -1,8 +1,14 @@
 import express, { Request, Response } from 'express';
+
 require('dotenv').config();
 import next from 'next';
 import feedsRouter from './routes/feeds';
 import bodyParser from 'body-parser';
+import { buildSchema } from 'graphql';
+
+const { graphqlHTTP } = require('express-graphql');
+import resolvers from './graphql/resolvers';
+import schemaBody from './graphql/schema';
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -15,6 +21,18 @@ const port = process.env.PORT || 3000;
     const server = express();
     server.use(bodyParser.json());
     server.use('/api/feeds', feedsRouter);
+
+    const schema = buildSchema(schemaBody);
+
+    server.use(
+      '/graphql',
+      graphqlHTTP({
+        schema,
+        graphiql: true,
+        rootValue: resolvers,
+      }),
+    );
+
     server.all('*', (req: Request, res: Response) => {
       return handle(req, res);
     });
