@@ -132,7 +132,7 @@ export default function SettingsModal({ selectedSettings, onSave, show, onHide, 
                       onInput={(e) =>
                         onSettingsUpdate({
                           ...selectedSettings,
-                          height: e.target.value,
+                          height: +e.target.value || undefined,
                         })
                       }
                     />
@@ -150,7 +150,7 @@ export default function SettingsModal({ selectedSettings, onSave, show, onHide, 
                       onInput={(e) =>
                         onSettingsUpdate({
                           ...selectedSettings,
-                          width: e.target.value,
+                          width: +e.target.value || undefined,
                         })
                       }
                     />
