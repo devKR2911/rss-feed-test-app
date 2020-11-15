@@ -1,8 +1,8 @@
-import {Button, Col, Form, Modal, Row} from 'react-bootstrap';
-import {useEffect, useRef, useState} from 'react';
-import {toast} from 'react-nextjs-toast';
+import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
+import { useEffect, useRef, useState } from 'react';
+import { toast } from 'react-nextjs-toast';
 
-export default function SettingsModal({selectedSettings, onSave, show, onHide, onSettingsUpdate}) {
+export default function SettingsModal({ selectedSettings, onSave, show, onHide, onSettingsUpdate }) {
   const formRef = useRef();
   const [validated, setValidated] = useState(false);
   useEffect(() => {
@@ -16,28 +16,35 @@ export default function SettingsModal({selectedSettings, onSave, show, onHide, o
 
     let query;
     let variables;
+    const feed = {};
+    for (const key of Object.keys(selectedSettings)) {
+      if (selectedSettings[key]) {
+        feed[key] = selectedSettings[key];
+      }
+    }
+
     if (selectedSettings._id) {
       query = `mutation($id: String!, $feed: FeedInput!) {
            FeedUpdate(id: $id,  feed: $feed){
                _id
            }
         }`;
-      variables = {id: selectedSettings._id, feed: selectedSettings};
+      variables = { feed, id: selectedSettings._id };
     } else {
       query = `mutation ($feed: FeedInput!) {
            FeedInsert(feed: $feed){
                _id
            }
         }`;
-      variables = {feed: selectedSettings};
+      variables = { feed };
     }
 
     await fetch('/graphql', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         query,
-        variables
+        variables,
       }),
     });
 
@@ -91,7 +98,7 @@ export default function SettingsModal({selectedSettings, onSave, show, onHide, o
                       onInput={(e) =>
                         onSettingsUpdate({
                           ...selectedSettings,
-                          headerFontSize: +e.target.value || null,
+                          headerFontSize: +e.target.value || undefined,
                         })
                       }
                     />
@@ -104,7 +111,7 @@ export default function SettingsModal({selectedSettings, onSave, show, onHide, o
                       size="sm"
                       type="number"
                       placeholder="Content Font size"
-                      value={selectedSettings.contentFontSize || null}
+                      value={selectedSettings.contentFontSize || undefined}
                       onInput={(e) =>
                         onSettingsUpdate({
                           ...selectedSettings,
@@ -121,7 +128,7 @@ export default function SettingsModal({selectedSettings, onSave, show, onHide, o
                       size="sm"
                       type="number"
                       placeholder="Block Height"
-                      value={selectedSettings.height || ''}
+                      value={selectedSettings.height}
                       onInput={(e) =>
                         onSettingsUpdate({
                           ...selectedSettings,

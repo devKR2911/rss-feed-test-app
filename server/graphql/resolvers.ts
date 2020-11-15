@@ -36,14 +36,7 @@ const FeedDataRead = async (args) => {
 };
 const FeedUpdate = async (args) => {
   const { __v, _id, ...rest } = args.feed;
-  if (args?.feed?.feedUrl) {
-    try {
-      const parser = new RssParser();
-      const feed = await parser.parseURL(args?.feed?.feedUrl);
-      rest.image = feed?.image?.url;
-      rest.description = feed?.description;
-    } catch (e) {}
-  }
+
   RssSettings.updateOne(
     { _id: args?.id },
     {

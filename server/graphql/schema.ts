@@ -9,6 +9,8 @@ input FeedInput{
   backgroundColor: String
   width: Int
   height:Int
+  image: String
+  description: String
 }
 
 

@@ -31,7 +31,6 @@ const RssSettingsSchema = new mongoose.Schema({
   }, height: {
     type: Number,
   },
-
 }, { toJSON: { getters: true } });
 
 const RssSettings = mongoose.models.RssSettings || model('RssSettings', RssSettingsSchema);
