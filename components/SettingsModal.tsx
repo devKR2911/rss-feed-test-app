@@ -1,8 +1,8 @@
-import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
-import { useEffect, useRef, useState } from 'react';
-import { toast } from 'react-nextjs-toast';
+import {Button, Col, Form, Modal, Row} from 'react-bootstrap';
+import {useEffect, useRef, useState} from 'react';
+import {toast} from 'react-nextjs-toast';
 
-export default function SettingsModal({ selectedSettings, onSave, show, onHide, onSettingsUpdate }) {
+export default function SettingsModal({selectedSettings, onSave, show, onHide, onSettingsUpdate}) {
   const formRef = useRef();
   const [validated, setValidated] = useState(false);
   useEffect(() => {
@@ -27,19 +27,19 @@ export default function SettingsModal({ selectedSettings, onSave, show, onHide, 
                _id
            }
         }`;
-      variables = { id: selectedSettings._id, feed:selectedSettings };
+      variables = {id: selectedSettings._id, feed: selectedSettings};
     } else {
       query = `mutation ($feed: FeedInput!) {
            FeedInsert(feed: $feed){
                _id
            }
         }`;
-      variables = { feed:selectedSettings };
+      variables = {feed: selectedSettings};
     }
 
     await fetch('/graphql', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         query,
         variables
@@ -59,7 +59,7 @@ export default function SettingsModal({ selectedSettings, onSave, show, onHide, 
       {selectedSettings && (
         <Modal show={show} onHide={() => onHide(false)}>
           <Modal.Header closeButton>
-            <Modal.Title>Feed Settings</Modal.Title>
+            <Modal.Title>{selectedSettings?._id ? 'Update' : 'Add New'} Feed</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>

@@ -58,6 +58,8 @@ export default function Home() {
               backgroundColor
               width
               height
+              image
+              description
            }
         }`,
       }),

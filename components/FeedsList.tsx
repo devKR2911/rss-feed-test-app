@@ -33,10 +33,11 @@ export default function FeedList({feeds, onEdit, onDelete, onView}) {
             <Col md={6} lg={4} xl={3} key={i} className="pb-4" style={{position: 'relative'}}>
               <Card style={{width: '100%'}}>
                 <Card.Body>
-                  <Card.Title className="feed-card-title"><a href={feed.feedUrl} target="_blank">{feed.feedUrl}</a></Card.Title>
+                  <Card.Img  src={feed.image}/>
+                  <Card.Title className="feed-card-title"><a href={feed.feedUrl}
+                                                             target="_blank">{feed.feedUrl}</a></Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
+                    {feed.description}
                   </Card.Text>
                 </Card.Body>
                 {/*<ListGroup className="list-group-flush">*/}
@@ -61,11 +62,11 @@ export default function FeedList({feeds, onEdit, onDelete, onView}) {
                 </Card.Body>
               </Card>
             </Col>
-          ))}
-        </Row>
-      ) : (
-        <Alert variant="info" className="mt-4">No saved RSS feed found</Alert>
-      )}
-    </div>
-  );
-}
+            ))}
+            </Row>
+            ) : (
+            <Alert variant="info" className="mt-4">No saved RSS feed found</Alert>
+            )}
+        </div>
+      );
+      }
