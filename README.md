@@ -38,15 +38,14 @@
 #### For production 
 
 - Install dependencies using
+
   ```      
   npm install
   ```
-- Build app using 
+- Build and run the app using 
+
   ```      
   npm run build
-  ```
-- Run production app using following command
-  ```      
   npm run start
   ```
 
