@@ -11,6 +11,7 @@ export default function FeedList({ feeds, onEdit, onDelete, onView }) {
               <ListGroup.Item key={i} className="d-flex  align-items-center list-item">
                 <span>{feed.feedUrl}</span>
                 <span className="flex-grow-1"/>
+                <div className="action-icons">
                 <span className=" ml-4 mr-2 flex-shrink-1" title="Edit settings of feed" onClick={() => onEdit(feed)}>
                   <i className="fa fa-cog  icn-btn"/>
                 </span>
@@ -20,6 +21,7 @@ export default function FeedList({ feeds, onEdit, onDelete, onView }) {
                 <span className="flex-shrink-1" title="Delete RSS feed" onClick={() => onDelete(feed._id)}>
                   <i className="fa fa-times  icn-btn"/>
                 </span>
+                </div>
               </ListGroup.Item>
             ))}
           </ListGroup>

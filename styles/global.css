@@ -34,7 +34,7 @@ img {
 .icn-btn {
   cursor: pointer;
   display: inline-block;
-  font-size:.8rem;
+  font-size:.86rem;
 }
 .list-item{
   max-width: 100%;
@@ -45,4 +45,17 @@ img {
   flex-shrink: 1;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+
+
+.action-icons{
+  max-width:0;
+  display: flex;
+  overflow: hidden;
+  transition: .4s max-width;
+}
+
+.list-item:hover .action-icons{
+  max-width:90px;
 }
