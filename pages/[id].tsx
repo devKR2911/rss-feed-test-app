@@ -52,7 +52,7 @@ export default function Feed() {
   }, [router?.query?.id]);
 
   return (
-    <div className="container container-fluid mt-1 mb-1">
+    <div className=" container-fluid mt-1 mb-1">
       {loading && (
         <div className="justify-content-center  d-flex align-content-center mt-4">
           <span>Loading please wait &nbsp;&nbsp;&nbsp;</span>
