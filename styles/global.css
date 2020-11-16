@@ -120,11 +120,13 @@ img {
 .feed-card {
     height: 100%;
     width: 100%;
+}
 
+.feed-item-card, .feed-card {
     transition: .4s transform, .4s box-shadow;
 }
 
-.feed-card:hover {
+.feed-card:hover, .feed-item-card:hover {
     transform: scale(1.01);
     box-shadow: 0 0 6px 0px #ccc;
 }

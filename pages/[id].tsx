@@ -54,7 +54,7 @@ export default function Feed() {
   return (
     <div className="container mt-1 mb-1">
       {loading && (
-        <div className="justify-content-center d-flex align-content-center mt-4">
+        <div className="justify-content-center  d-flex align-content-center mt-4">
           <span>Loading please wait &nbsp;&nbsp;&nbsp;</span>
           <i className="fas fa-circle-notch fa-spin" style={{ fontSize: '30px' }}></i>
         </div>
@@ -62,22 +62,24 @@ export default function Feed() {
 
       {!loading && data && (
         <div>
-          <div className="d-flex mt-2">
-            <Image width={50} src={data?.image?.url} roundedCircle />
+          <div className="d-flex mt-4 mb-2 align-items-center justify-content-center">
+            <Image width={50} height={50} src={data?.image?.url} roundedCircle />
             <h3 className="text-capitalize mt-3 mb-3 ml-2 text-center">{data.title}</h3>
           </div>
           {data.items?.length ? (
-            data.items.map((item, i) => (
-              <Card
-                className="mt-2 mx-auto"
-                key={i}
-                style={{
-                  width: settings?.width ? `${settings.width}px` : 'auto',
-                  height: settings?.height ? `${settings.height}px` : 'auto',
-                  overflow: 'auto',
-                }}
-              >
-                <Card.Header>
+
+            <div className="d-flex flex-wrap justify-content-center">
+              {data.items.map((item, i) => (
+                <Card
+                  className="m-1 feed-item-card"
+                  key={i}
+                  style={{
+                    width: settings?.width ? `${settings.width}px` : 'auto',
+                    height: settings?.height ? `${settings.height}px` : 'auto',
+                    overflow: 'auto',
+                  }}
+                >
+                  <Card.Header>
                   <span
                     style={{
                       fontSize: settings?.headerFontSize ? `${settings?.headerFontSize}px` : '18px',
@@ -86,18 +88,20 @@ export default function Feed() {
                   >
                     {item.title}
                   </span>
-                </Card.Header>
-                <Card.Body
-                  style={{
-                    fontSize: settings?.contentFontSize ? `${settings?.contentFontSize}px` : '12px',
-                    color: settings?.contentColor || '#000',
-                    backgroundColor: settings?.backgroundColor || '#fff',
-                  }}
-                >
-                  <div dangerouslySetInnerHTML={{ __html: item.content }}></div>
-                </Card.Body>
-              </Card>
-            ))
+                  </Card.Header>
+                  <Card.Body
+                    style={{
+                      fontSize: settings?.contentFontSize ? `${settings?.contentFontSize}px` : '12px',
+                      color: settings?.contentColor || '#000',
+                      backgroundColor: settings?.backgroundColor || '#fff',
+                    }}
+                  >
+                    <div dangerouslySetInnerHTML={{__html: item.content}}></div>
+                  </Card.Body>
+                </Card>
+              ))
+              }
+            </div>
           ) : (
             <Alert variant="info">No feed items found</Alert>
           )}
